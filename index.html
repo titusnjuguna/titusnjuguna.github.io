@@ -106,4 +106,74 @@
         <header class="fade-in">
             <span class="section-label">Software Engineer</span>
             <h1>I build robust <br>digital architectures.</h1>
-            <p class="hero-sub">Specializing in
+            <p class="hero-sub">Specializing in cloud-native applications, distributed systems, and minimalist user interfaces. Currently engineering at <strong>FinTech Corp</strong>.</p>
+        </header>
+
+        <section id="projects" style="padding: 60px 0;">
+            <span class="section-label">// Featured Work</span>
+            <div class="project-grid">
+                <a href="#" class="project-card">
+                    <h3>01 / Quantum-DB</h3>
+                    <p style="color: var(--text-dim); margin-top: 0.5rem;">A distributed NoSQL database written in Go with Raft consensus implementation.</p>
+                    <div class="project-tags">
+                        <span class="tag">Go</span> <span class="tag">Docker</span> <span class="tag">gRPC</span>
+                    </div>
+                </a>
+                <a href="#" class="project-card">
+                    <h3>02 / Nexus UI</h3>
+                    <p style="color: var(--text-dim); margin-top: 0.5rem;">A lightweight React component library designed for high-performance dashboards.</p>
+                    <div class="project-tags">
+                        <span class="tag">TS</span> <span class="tag">SCSS</span> <span class="tag">Vite</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section id="experience" style="padding: 60px 0;">
+            <span class="section-label">// Career Path</span>
+            
+            <div class="exp-item">
+                <span class="exp-date">2024 — Present</span>
+                <div>
+                    <div class="exp-role">Senior Software Engineer</div>
+                    <div class="exp-company">FinTech Corp</div>
+                    <p style="color: var(--text-dim); font-size: 0.95rem;">Leading the core payments infrastructure team. Reduced transaction latency by 40%.</p>
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <span class="exp-date">2022 — 2024</span>
+                <div>
+                    <div class="exp-role">Full Stack Developer</div>
+                    <div class="exp-company">Streamline SaaS</div>
+                    <p style="color: var(--text-dim); font-size: 0.95rem;">Developed real-time collaboration features using WebSockets and Node.js.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p style="color: var(--text-dim); margin-bottom: 1rem;">Have a project in mind?</p>
+            <a href="mailto:hello@alexdev.io" class="contact-email">Get In Touch</a>
+            <div class="social-links">
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">X (Twitter)</a>
+                <a href="#">Resume</a>
+            </div>
+            <p style="margin-top: 4rem; color: #333; font-size: 0.7rem; font-family: var(--font-mono);">
+                &copy; 2026 ALEX_ENGINEER. ALL RIGHTS RESERVED.
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Progress Bar Script
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progress").style.width = scrolled + "%";
+        };
+    </script>
+</body>
+</html>
