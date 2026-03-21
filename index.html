@@ -1,257 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Titus Njuguna — Software Engineer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Portfolio | Minimal</title>
+    <style>
+        /* --- DESIGN SYSTEM --- */
+        :root {
+            --bg: #0d0d0d;
+            --card-bg: #161616;
+            --text-main: #f0f0f0;
+            --text-dim: #888;
+            --accent: #4ade80; /* Soft Emerald */
+            --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            padding-bottom: 100px;
+        }
 
-:root {
-  --bg: #0b0b0b;
-  --text: #eaeaea;
-  --muted: #777;
-  --border: #1a1a1a;
-  --accent: #7cff6b;
-}
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-}
+        /* --- NAVIGATION --- */
+        nav {
+            padding: 2.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-/* Layout */
-.container {
-  max-width: 700px;
-  margin: auto;
-  padding: 0 20px;
-}
+        .logo {
+            font-family: var(--font-mono);
+            font-weight: bold;
+            color: var(--accent);
+        }
 
-/* Nav */
-nav {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  border-bottom: 1px solid var(--border);
-  background: rgba(11,11,11,0.8);
-  backdrop-filter: blur(10px);
-}
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
 
-nav .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-}
+        nav a {
+            text-decoration: none;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
 
-nav a {
-  text-decoration: none;
-  color: var(--muted);
-  font-size: 14px;
-}
+        nav a:hover {
+            color: var(--accent);
+        }
 
-nav a:hover {
-  color: var(--text);
-}
+        /* --- HERO --- */
+        header {
+            margin-top: 4rem;
+            margin-bottom: 6rem;
+        }
 
-/* Hero */
-.hero {
-  padding: 140px 0 80px;
-}
+        h1 {
+            font-size: 3rem;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+        }
 
-.hero h1 {
-  font-size: 42px;
-  font-weight: 400;
-  margin-bottom: 20px;
-}
+        .hero-sub {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 500px;
+        }
 
-.hero p {
-  color: var(--muted);
-  max-width: 500px;
-  margin-bottom: 30px;
-}
+        /* --- TECH STACK --- */
+        .stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
 
-.btn {
-  padding: 10px 18px;
-  border: 1px solid var(--border);
-  text-decoration: none;
-  font-size: 13px;
-  color: var(--text);
-  transition: 0.2s;
-}
+        .tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            background: var(--card-bg);
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid #333;
+            color: var(--text-dim);
+        }
 
-.btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
+        /* --- PROJECTS --- */
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            display: block;
+        }
 
-/* Sections */
-section {
-  padding: 70px 0;
-  border-top: 1px solid var(--border);
-}
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
 
-.section-title {
-  font-size: 12px;
-  color: var(--muted);
-  margin-bottom: 30px;
-  letter-spacing: 2px;
-}
+        .project-card {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            group: hover;
+        }
 
-/* Projects */
-.project {
-  margin-bottom: 30px;
-}
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px solid #222;
+            padding-bottom: 0.5rem;
+        }
 
-.project h3 {
-  font-size: 16px;
-  margin-bottom: 5px;
-}
+        .project-card h3 {
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
 
-.project p {
-  font-size: 14px;
-  color: var(--muted);
-}
+        .project-card:hover h3 {
+            color: var(--accent);
+            padding-left: 10px;
+        }
 
-/* Experience */
-.exp {
-  margin-bottom: 25px;
-}
+        .project-card p {
+            margin-top: 0.75rem;
+            color: var(--text-dim);
+            font-size: 1rem;
+        }
 
-.exp span {
-  font-size: 12px;
-  color: var(--muted);
-}
+        .year {
+            font-family: var(--font-mono);
+            color: #444;
+            font-size: 0.9rem;
+        }
 
-.exp h4 {
-  font-size: 15px;
-  margin: 5px 0;
-}
+        /* --- FOOTER --- */
+        footer {
+            margin-top: 8rem;
+            border-top: 1px solid #222;
+            padding-top: 2rem;
+            color: #444;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+        }
 
-/* Contact */
-.contact a {
-  display: block;
-  margin-bottom: 10px;
-  color: var(--muted);
-  text-decoration: none;
-}
-
-.contact a:hover {
-  color: var(--accent);
-}
-
-/* Footer */
-footer {
-  padding: 40px 0;
-  text-align: center;
-  font-size: 12px;
-  color: var(--muted);
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .hero h1 {
-    font-size: 32px;
-  }
-}
-</style>
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="container">
-    <div>~/titus</div>
-    <div>
-      <a href="#work">work</a> &nbsp;
-      <a href="#experience">exp</a> &nbsp;
-      <a href="#contact">contact</a>
+    <div class="container">
+        <nav>
+            <div class="logo">const name = "Alex";</div>
+            <ul>
+                <li><a href="#work">Work</a></li>
+                <li><a href="https://github.com">GitHub</a></li>
+                <li><a href="mailto:hello@dev.com">Contact</a></li>
+            </ul>
+        </nav>
+
+        <header>
+            <h1>Full-stack Engineer.</h1>
+            <p class="hero-sub">Focusing on distributed systems, CLI tools, and high-performance web applications.</p>
+            
+            <div class="stack">
+                <span class="tag">TypeScript</span>
+                <span class="tag">Go</span>
+                <span class="tag">React</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Docker</span>
+            </div>
+        </header>
+
+        <main id="work">
+            <span class="section-label">// Selected Work</span>
+            
+            <div class="project-list">
+                <a href="#" class="project-card">
+                    <div class="project-header">
+                        <h3>HyperTask CLI</h3>
+                        <span class="year">2026</span>
+                    </div>
+                    <p>A Rust-based task runner that executes parallel builds 4x faster than standard Makefiles.</p>
+                </a>
+
+                <a href="#" class="project-card">
+                    <div class="project-header">
+                        <h3>Lumina API</h3>
+                        <span class="year">2025</span>
+                    </div>
+                    <p>A GraphQL gateway serving 10M+ requests daily with sub-50ms latency.</p>
+                </a>
+
+                <a href="#" class="project-card">
+                    <div class="project-header">
+                        <h3>DataViz Engine</h3>
+                        <span class="year">2024</span>
+                    </div>
+                    <p>Open-source library for rendering complex WebGL datasets with zero frame drops.</p>
+                </a>
+            </div>
+        </main>
+
+        <footer>
+            <span>Built with HTML/CSS</span>
+            <span>&copy; 2026 Alex Dev</span>
+        </footer>
     </div>
-  </div>
-</nav>
-
-<!-- HERO -->
-<div class="container hero">
-  <h1>Titus Njuguna</h1>
-  <p>
-    Software engineer building scalable systems and clean user interfaces.
-    Focused on performance, simplicity, and real-world impact.
-  </p>
-  <a href="#contact" class="btn">Get in touch</a>
-</div>
-
-<!-- WORK -->
-<section id="work">
-  <div class="container">
-    <div class="section-title">// projects</div>
-
-    <div class="project">
-      <h3>Flowboard</h3>
-      <p>Real-time collaborative task management tool.</p>
-    </div>
-
-    <div class="project">
-      <h3>Logpilot</h3>
-      <p>Lightweight logging system for backend services.</p>
-    </div>
-
-    <div class="project">
-      <h3>Terrace</h3>
-      <p>Cloud cost monitoring dashboard.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="container">
-    <div class="section-title">// experience</div>
-
-    <div class="exp">
-      <span>2022 — Present</span>
-      <h4>Senior Software Engineer — Andela</h4>
-    </div>
-
-    <div class="exp">
-      <span>2020 — 2022</span>
-      <h4>Full-Stack Engineer — Safaricom</h4>
-    </div>
-
-    <div class="exp">
-      <span>2019 — 2020</span>
-      <h4>Frontend Developer — Ushahidi</h4>
-    </div>
-
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="container contact">
-    <div class="section-title">// contact</div>
-
-    <a href="mailto:titus@example.com">titus@example.com</a>
-    <a href="#">github.com/titusnj</a>
-    <a href="#">linkedin.com/in/titusnj</a>
-
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  © 2026 Titus Njuguna
-</footer>
 
 </body>
 </html>
