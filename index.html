@@ -3,234 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dev Portfolio | Minimal</title>
+    <title>Dev Portfolio | Minimal & Modern</title>
     <style>
         /* --- DESIGN SYSTEM --- */
         :root {
-            --bg: #0d0d0d;
-            --card-bg: #161616;
-            --text-main: #f0f0f0;
-            --text-dim: #888;
-            --accent: #4ade80; /* Soft Emerald */
-            --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            --bg: #050505;
+            --surface: #111111;
+            --border: #222222;
+            --text-main: #ffffff;
+            --text-dim: #999999;
+            --accent: #3b82f6; /* Modern Blue */
+            --accent-glow: rgba(59, 130, 246, 0.2);
+            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
             background-color: var(--bg);
             color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
             line-height: 1.6;
-            padding-bottom: 100px;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
+        /* --- UTILITIES --- */
+        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        .section-label { font-family: var(--font-mono); color: var(--accent); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 2rem; display: block; letter-spacing: 2px; }
+        .fade-in { animation: fadeIn 0.8s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- PROGRESS BAR --- */
+        #progress {
+            position: fixed; top: 0; left: 0; height: 3px; background: var(--accent);
+            z-index: 100; width: 0%; transition: width 0.1s;
         }
 
         /* --- NAVIGATION --- */
-        nav {
-            padding: 2.5rem 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: var(--font-mono);
-            font-weight: bold;
-            color: var(--accent);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            transition: 0.2s;
-        }
-
-        nav a:hover {
-            color: var(--accent);
-        }
+        nav { padding: 2rem 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+        .logo { font-family: var(--font-mono); font-weight: 700; color: var(--text-main); text-decoration: none; }
+        nav ul { display: flex; list-style: none; gap: 1.5rem; }
+        nav a { text-decoration: none; color: var(--text-dim); font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover { color: var(--accent); }
 
         /* --- HERO --- */
-        header {
-            margin-top: 4rem;
-            margin-bottom: 6rem;
-        }
+        header { padding: 100px 0; }
+        h1 { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 800; letter-spacing: -2px; margin-bottom: 1.5rem; line-height: 1.1; }
+        .hero-sub { font-size: 1.2rem; color: var(--text-dim); max-width: 600px; margin-bottom: 2rem; }
 
-        h1 {
-            font-size: 3rem;
-            letter-spacing: -1px;
-            margin-bottom: 1rem;
-        }
+        /* --- EXPERIENCE SECTION --- */
+        .exp-item { margin-bottom: 2.5rem; display: grid; grid-template-columns: 180px 1fr; }
+        .exp-date { font-family: var(--font-mono); color: var(--text-dim); font-size: 0.85rem; }
+        .exp-role { font-weight: 600; font-size: 1.1rem; }
+        .exp-company { color: var(--accent); font-size: 0.9rem; margin-bottom: 0.5rem; }
 
-        .hero-sub {
-            font-size: 1.25rem;
-            color: var(--text-dim);
-            max-width: 500px;
-        }
-
-        /* --- TECH STACK --- */
-        .stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-top: 2rem;
-        }
-
-        .tag {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            background: var(--card-bg);
-            padding: 4px 10px;
-            border-radius: 4px;
-            border: 1px solid #333;
-            color: var(--text-dim);
-        }
-
-        /* --- PROJECTS --- */
-        .section-label {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            display: block;
-        }
-
-        .project-list {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-        }
-
+        /* --- PROJECT GRID --- */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
         .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: 0.3s all;
             text-decoration: none;
             color: inherit;
-            display: block;
-            group: hover;
         }
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+        .project-tags { display: flex; gap: 0.5rem; margin-top: 1rem; }
+        .tag { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); border: 1px solid #333; padding: 2px 8px; border-radius: 4px; }
 
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            border-bottom: 1px solid #222;
-            padding-bottom: 0.5rem;
-        }
-
-        .project-card h3 {
-            font-size: 1.5rem;
-            transition: 0.3s;
-        }
-
-        .project-card:hover h3 {
-            color: var(--accent);
-            padding-left: 10px;
-        }
-
-        .project-card p {
-            margin-top: 0.75rem;
-            color: var(--text-dim);
-            font-size: 1rem;
-        }
-
-        .year {
-            font-family: var(--font-mono);
-            color: #444;
-            font-size: 0.9rem;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            margin-top: 8rem;
-            border-top: 1px solid #222;
-            padding-top: 2rem;
-            color: #444;
-            font-size: 0.8rem;
-            display: flex;
-            justify-content: space-between;
-        }
+        /* --- FOOTER / CONTACT --- */
+        footer { padding: 100px 0 50px; text-align: center; border-top: 1px solid var(--border); margin-top: 5rem; }
+        .contact-email { font-size: 1.5rem; font-weight: 700; color: var(--text-main); text-decoration: none; border-bottom: 2px solid var(--accent); }
+        .social-links { margin-top: 2rem; display: flex; justify-content: center; gap: 2rem; }
+        .social-links a { color: var(--text-dim); text-decoration: none; font-family: var(--font-mono); font-size: 0.9rem; }
+        .social-links a:hover { color: var(--text-main); }
 
         @media (max-width: 600px) {
-            h1 { font-size: 2.2rem; }
+            .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+            header { padding: 60px 0; }
         }
     </style>
 </head>
 <body>
 
+    <div id="progress"></div>
+
     <div class="container">
         <nav>
-            <div class="logo">const name = "Alex";</div>
+            <a href="#" class="logo">ALEX.SYS</a>
             <ul>
-                <li><a href="#work">Work</a></li>
-                <li><a href="https://github.com">GitHub</a></li>
-                <li><a href="mailto:hello@dev.com">Contact</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="mailto:hello@alexdev.io">Contact</a></li>
             </ul>
         </nav>
 
-        <header>
-            <h1>Full-stack Engineer.</h1>
-            <p class="hero-sub">Focusing on distributed systems, CLI tools, and high-performance web applications.</p>
-            
-            <div class="stack">
-                <span class="tag">TypeScript</span>
-                <span class="tag">Go</span>
-                <span class="tag">React</span>
-                <span class="tag">PostgreSQL</span>
-                <span class="tag">Docker</span>
-            </div>
-        </header>
-
-        <main id="work">
-            <span class="section-label">// Selected Work</span>
-            
-            <div class="project-list">
-                <a href="#" class="project-card">
-                    <div class="project-header">
-                        <h3>HyperTask CLI</h3>
-                        <span class="year">2026</span>
-                    </div>
-                    <p>A Rust-based task runner that executes parallel builds 4x faster than standard Makefiles.</p>
-                </a>
-
-                <a href="#" class="project-card">
-                    <div class="project-header">
-                        <h3>Lumina API</h3>
-                        <span class="year">2025</span>
-                    </div>
-                    <p>A GraphQL gateway serving 10M+ requests daily with sub-50ms latency.</p>
-                </a>
-
-                <a href="#" class="project-card">
-                    <div class="project-header">
-                        <h3>DataViz Engine</h3>
-                        <span class="year">2024</span>
-                    </div>
-                    <p>Open-source library for rendering complex WebGL datasets with zero frame drops.</p>
-                </a>
-            </div>
-        </main>
-
-        <footer>
-            <span>Built with HTML/CSS</span>
-            <span>&copy; 2026 Alex Dev</span>
-        </footer>
-    </div>
-
-</body>
-</html>
+        <header class="fade-in">
+            <span class="section-label">Software Engineer</span>
+            <h1>I build robust <br>digital architectures.</h1>
+            <p class="hero-sub">Specializing in
