@@ -3,177 +3,347 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dev Portfolio | Minimal & Modern</title>
+    <title>Titus Njuguna | Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    
     <style>
-        /* --- DESIGN SYSTEM --- */
         :root {
-            --bg: #050505;
-            --surface: #111111;
-            --border: #222222;
-            --text-main: #ffffff;
-            --text-dim: #999999;
-            --accent: #3b82f6; /* Modern Blue */
-            --accent-glow: rgba(59, 130, 246, 0.2);
-            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+            --bg: #030303;
+            --card: #0a0a0a;
+            --border: rgba(255, 255, 255, 0.08);
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --accent: #6366f1;
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
         body {
             background-color: var(--bg);
-            color: var(--text-main);
-            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* --- UTILITIES --- */
-        .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
-        .section-label { font-family: var(--font-mono); color: var(--accent); font-size: 0.8rem; text-transform: uppercase; margin-bottom: 2rem; display: block; letter-spacing: 2px; }
-        .fade-in { animation: fadeIn 0.8s ease forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Ambient Glow Background */
+        .glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% -20%, rgba(99, 102, 241, 0.15), transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
 
-        /* --- PROGRESS BAR --- */
-        #progress {
-            position: fixed; top: 0; left: 0; height: 3px; background: var(--accent);
-            z-index: 100; width: 0%; transition: width 0.1s;
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
         }
 
         /* --- NAVIGATION --- */
-        nav { padding: 2rem 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
-        .logo { font-family: var(--font-mono); font-weight: 700; color: var(--text-main); text-decoration: none; }
-        nav ul { display: flex; list-style: none; gap: 1.5rem; }
-        nav a { text-decoration: none; color: var(--text-dim); font-size: 0.9rem; transition: 0.3s; }
-        nav a:hover { color: var(--accent); }
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(3, 3, 3, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--text-primary); }
 
         /* --- HERO --- */
-        header { padding: 100px 0; }
-        h1 { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 800; letter-spacing: -2px; margin-bottom: 1.5rem; line-height: 1.1; }
-        .hero-sub { font-size: 1.2rem; color: var(--text-dim); max-width: 600px; margin-bottom: 2rem; }
+        .hero {
+            padding: 120px 0 80px;
+            text-align: left;
+        }
 
-        /* --- EXPERIENCE SECTION --- */
-        .exp-item { margin-bottom: 2.5rem; display: grid; grid-template-columns: 180px 1fr; }
-        .exp-date { font-family: var(--font-mono); color: var(--text-dim); font-size: 0.85rem; }
-        .exp-role { font-weight: 600; font-size: 1.1rem; }
-        .exp-company { color: var(--accent); font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 100px;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
 
-        /* --- PROJECT GRID --- */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
-        .project-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 1.5rem;
+        h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            margin-bottom: 2rem;
+            background: linear-gradient(to bottom, #fff 40%, #71717a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 12px 24px;
             border-radius: 8px;
-            transition: 0.3s all;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border);
+            color: white;
+        }
+
+        .btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+        /* --- PROJECT BENTO GRID --- */
+        .section-title {
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: "";
+            height: 1px;
+            flex-grow: 1;
+            background: var(--border);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
             text-decoration: none;
             color: inherit;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
         }
+
         .project-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px var(--accent-glow);
+            border-color: rgba(255, 255, 255, 0.2);
+            background: #111;
+            transform: scale(1.02);
         }
-        .project-tags { display: flex; gap: 0.5rem; margin-top: 1rem; }
-        .tag { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); border: 1px solid #333; padding: 2px 8px; border-radius: 4px; }
 
-        /* --- FOOTER / CONTACT --- */
-        footer { padding: 100px 0 50px; text-align: center; border-top: 1px solid var(--border); margin-top: 5rem; }
-        .contact-email { font-size: 1.5rem; font-weight: 700; color: var(--text-main); text-decoration: none; border-bottom: 2px solid var(--accent); }
-        .social-links { margin-top: 2rem; display: flex; justify-content: center; gap: 2rem; }
-        .social-links a { color: var(--text-dim); text-decoration: none; font-family: var(--font-mono); font-size: 0.9rem; }
-        .social-links a:hover { color: var(--text-main); }
+        /* Bento Logic */
+        .p-large { grid-column: span 7; }
+        .p-small { grid-column: span 5; }
+        .p-wide { grid-column: span 12; }
 
-        @media (max-width: 600px) {
-            .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
-            header { padding: 60px 0; }
+        .project-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .project-card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; }
+        .tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .stats {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .cta-box {
+            background: var(--accent-gradient);
+            padding: 4rem 2rem;
+            border-radius: 24px;
+            margin-bottom: 4rem;
+        }
+
+        .cta-box h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover { color: var(--accent); }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .p-large, .p-small { grid-column: span 12; }
+            h1 { font-size: 3.5rem; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <div id="progress"></div>
+    <div class="glow"></div>
 
-    <div class="container">
-        <nav>
-            <a href="#" class="logo">ALEX.SYS</a>
-            <ul>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="mailto:hello@alexdev.io">Contact</a></li>
+    <nav>
+        <div class="container nav-content">
+            <a href="#" class="logo" style="font-family: 'JetBrains Mono'; text-decoration: none; color: #fff;">TN.</a>
+            <ul class="nav-links">
+                <li><a href="#work">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://www.linkedin.com/in/titus-njuguna-njonjo/" target="_blank">LinkedIn</a></li>
             </ul>
-        </nav>
+        </div>
+    </nav>
 
-        <header class="fade-in">
-            <span class="section-label">Software Engineer</span>
-            <h1>I build robust <br>digital architectures.</h1>
-            <p class="hero-sub">Specializing in cloud-native applications, distributed systems, and minimalist user interfaces. Currently engineering at <strong>FinTech Corp</strong>.</p>
-        </header>
-
-        <section id="projects" style="padding: 60px 0;">
-            <span class="section-label">// Featured Work</span>
-            <div class="project-grid">
-                <a href="#" class="project-card">
-                    <h3>01 / Quantum-DB</h3>
-                    <p style="color: var(--text-dim); margin-top: 0.5rem;">A distributed NoSQL database written in Go with Raft consensus implementation.</p>
-                    <div class="project-tags">
-                        <span class="tag">Go</span> <span class="tag">Docker</span> <span class="tag">gRPC</span>
-                    </div>
-                </a>
-                <a href="#" class="project-card">
-                    <h3>02 / Nexus UI</h3>
-                    <p style="color: var(--text-dim); margin-top: 0.5rem;">A lightweight React component library designed for high-performance dashboards.</p>
-                    <div class="project-tags">
-                        <span class="tag">TS</span> <span class="tag">SCSS</span> <span class="tag">Vite</span>
-                    </div>
-                </a>
+    <main class="container">
+        
+        <section class="hero">
+            <div class="badge">Available for new opportunities</div>
+            <h1>Software Engineer & <br>System Architect.</h1>
+            <p>I specialize in building production-ready AI workflows, multi-tenant SaaS architectures, and high-performance financial systems.</p>
+            <div class="btn-group">
+                <a href="mailto:titusnjuguna@example.com" class="btn btn-primary">Start a project</a>
+                <a href="https://github.com/titusnjuguna" class="btn btn-secondary" target="_blank">View GitHub</a>
             </div>
         </section>
 
-        <section id="experience" style="padding: 60px 0;">
-            <span class="section-label">// Career Path</span>
+        <section id="work">
+            <h2 class="section-title">Selected Projects</h2>
             
-            <div class="exp-item">
-                <span class="exp-date">2024 — Present</span>
-                <div>
-                    <div class="exp-role">Senior Software Engineer</div>
-                    <div class="exp-company">FinTech Corp</div>
-                    <p style="color: var(--text-dim); font-size: 0.95rem;">Leading the core payments infrastructure team. Reduced transaction latency by 40%.</p>
+            <div class="project-grid">
+                
+                <div class="project-card p-large">
+                    <h3>Sinapsis AI Automation</h3>
+                    <p>Designed a custom AI workflow engine that allows users to visualize and execute complex logic chains using FastAPI and Vue-Flow. Built for high scalability and modularity.</p>
+                    <div class="tags">
+                        <span class="tag">FastAPI</span> <span class="tag">Vue.js</span> <span class="tag">Vue-Flow</span> <span class="tag">Python</span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="exp-item">
-                <span class="exp-date">2022 — 2024</span>
-                <div>
-                    <div class="exp-role">Full Stack Developer</div>
-                    <div class="exp-company">Streamline SaaS</div>
-                    <p style="color: var(--text-dim); font-size: 0.95rem;">Developed real-time collaboration features using WebSockets and Node.js.</p>
+                <div class="project-card p-small">
+                    <h3>Crowdfunding Platform</h3>
+                    <p>A high-traffic financial platform managing significant transaction volumes with 99.9% uptime.</p>
+                    <div class="stats">$50,000+ / mo</div>
+                    <div class="tags">
+                        <span class="tag">Django</span> <span class="tag">PostgreSQL</span> <span class="tag">Celery</span>
+                    </div>
                 </div>
+
+                <div class="project-card p-wide">
+                    <h3>Naiverah Ltd: Microlending SaaS</h3>
+                    <p>Built a robust multi-tenant SaaS architecture for the microlending industry. Features include tenant isolation, automated loan calculation engines, and comprehensive reporting dashboards.</p>
+                    <div class="tags">
+                        <span class="tag">Python</span> <span class="tag">Django</span> <span class="tag">Angular</span> <span class="tag">Postgres</span> <span class="tag">AWS</span>
+                    </div>
+                </div>
+
+                <a href="https://spacemabatiandsteel.co.ke" target="_blank" class="project-card p-small">
+                    <h3>Space Mabati & Steel</h3>
+                    <p>Corporate presence for a manufacturing giant. Optimized for speed and SEO.</p>
+                    <div class="tags">
+                        <span class="tag">WordPress</span> <span class="tag">Custom CSS</span>
+                    </div>
+                </a>
+
+                <a href="https://traveltalk.co.ke" target="_blank" class="project-card p-large">
+                    <h3>Traveltalk Kenya Ltd</h3>
+                    <p>An interactive booking and exploration platform for the tourism industry, focusing on conversion-driven design and user experience.</p>
+                    <div class="tags">
+                        <span class="tag">JavaScript</span> <span class="tag">WordPress</span> <span class="tag">UI/UX</span>
+                    </div>
+                </a>
+
             </div>
         </section>
 
-        <footer>
-            <p style="color: var(--text-dim); margin-bottom: 1rem;">Have a project in mind?</p>
-            <a href="mailto:hello@alexdev.io" class="contact-email">Get In Touch</a>
-            <div class="social-links">
-                <a href="#">GitHub</a>
-                <a href="#">LinkedIn</a>
-                <a href="#">X (Twitter)</a>
-                <a href="#">Resume</a>
-            </div>
-            <p style="margin-top: 4rem; color: #333; font-size: 0.7rem; font-family: var(--font-mono);">
-                &copy; 2026 ALEX_ENGINEER. ALL RIGHTS RESERVED.
-            </p>
-        </footer>
-    </div>
+    </main>
 
-    <script>
-        // Progress Bar Script
-        window.onscroll = function() {
-            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled = (winScroll / height) * 100;
-            document.getElementById("progress").style.width = scrolled + "%";
-        };
-    </script>
+    <footer id="contact" class="container">
+        <div class="cta-box">
+            <h2>Let’s build the next <br>big thing together.</h2>
+            <a href="mailto:titusnjuguna@example.com" class="btn btn-secondary" style="background: white; color: black;">Get in touch</a>
+        </div>
+
+        <div class="footer-links">
+            <a href="https://github.com/titusnjuguna" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/titus-njuguna-njonjo/" target="_blank">LinkedIn</a>
+            <a href="#">Resume</a>
+        </div>
+        <p style="color: #444; font-size: 0.8rem;">&copy; 2026 Titus Njuguna • Crafted with precision.</p>
+    </footer>
+
 </body>
 </html>
