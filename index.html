@@ -214,6 +214,142 @@
             color: var(--accent);
         }
 
+        /* --- ABOUT SECTION --- */
+        .about-section {
+            padding: 80px 0 60px;
+        }
+
+        .about-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.25rem;
+            background: linear-gradient(to bottom, #fff 40%, #71717a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p span {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .about-stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .about-stat-card:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            background: #111;
+        }
+
+        .about-stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .about-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .skills-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-chip {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            padding: 5px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            background: #0f0f0f;
+            transition: 0.25s;
+        }
+
+        .skill-chip:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 900px) {
+            .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+        }
+
+        /* --- NEW: Live indicator pill --- */
+        .live-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.35);
+            border-radius: 100px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            color: #4ade80;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .live-pill::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #4ade80;
+            animation: pulse-dot 1.8s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.75); }
+        }
+
+        /* Subtle red accent strip for the Coca-Cola card */
+        .card-coca::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ef4444 0%, #f97316 100%);
+            border-radius: 16px 16px 0 0;
+        }
+
         /* --- FOOTER --- */
         footer {
             padding: 120px 0 60px;
@@ -245,6 +381,65 @@
 
         .footer-links a:hover { color: var(--accent); }
 
+        /* --- CONTACT SECTION --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            text-decoration: none;
+            color: inherit;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .contact-card:hover {
+            border-color: rgba(99, 102, 241, 0.5);
+            background: #111;
+            transform: translateY(-3px);
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(99, 102, 241, 0.12);
+            border: 1px solid rgba(99, 102, 241, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.25rem;
+        }
+
+        .contact-info-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 4px;
+        }
+
+        .contact-info-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 600px) {
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+
         /* Responsive */
         @media (max-width: 900px) {
             .p-large, .p-small { grid-column: span 12; }
@@ -263,6 +458,7 @@
             <ul class="nav-links">
                 <li><a href="#work">Work</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="https://dev.to/titon" target="_blank">Blog</a></li>
                 <li><a href="https://www.linkedin.com/in/titus-njuguna-njonjo/" target="_blank">LinkedIn</a></li>
             </ul>
         </div>
@@ -272,11 +468,60 @@
         
         <section class="hero">
             <div class="badge">Available for new opportunities</div>
-            <h1>Software Engineer </h1> <!--br>System Architect.</h1-->
+            <h1>Software Engineer </h1>
             <p>I specialize in building production-ready AI workflows, multi-tenant SaaS architectures, and high-performance financial systems.</p>
             <div class="btn-group">
-                <a href="mailto:titusnjuguna@example.com" class="btn btn-primary">Start a project</a>
+                <a href="mailto:titusnjuguna59@gmail.com" class="btn btn-primary">Start a project</a>
                 <a href="https://github.com/titusnjuguna" class="btn btn-secondary" target="_blank">View GitHub</a>
+            </div>
+        </section>
+
+        <!-- ✦ ABOUT SECTION ✦ -->
+        <section class="about-section">
+            <div class="about-inner">
+                <div class="about-text">
+                    <h2>Building systems that actually scale.</h2>
+                    <p>
+                        I'm <span>Titus Njuguna</span>, a software engineer based in <span>Nairobi, Kenya</span> with over <span>5 years</span> of experience designing and shipping production-grade software. I work across the full stack — from architecting cloud infrastructure to crafting intuitive user interfaces.
+                    </p>
+                    <p>
+                        My focus is on <span>AI-powered systems</span>, <span>multi-tenant SaaS platforms</span>, and <span>high-performance financial applications</span>. I care deeply about clean architecture, reliable systems, and software that delivers measurable real-world impact.
+                    </p>
+                    <p>
+                        When I'm not building, I write about engineering on my <a href="https://dev.to/titon" target="_blank" style="color: var(--accent); text-decoration: none;">dev.to blog</a>.
+                    </p>
+                    <div class="skills-row">
+                        <span class="skill-chip">Python</span>
+                        <span class="skill-chip">FastAPI</span>
+                        <span class="skill-chip">Django</span>
+                        <span class="skill-chip">React</span>
+                        <span class="skill-chip">Vue.js</span>
+                        <span class="skill-chip">Angular</span>
+                        <span class="skill-chip">PostgreSQL</span>
+                        <span class="skill-chip">AWS</span>
+                        <span class="skill-chip">Docker</span>
+                        <span class="skill-chip">Celery</span>
+                    </div>
+                </div>
+
+                <div class="about-stats">
+                    <div class="about-stat-card">
+                        <div class="about-stat-number">5+</div>
+                        <div class="about-stat-label">Years of experience</div>
+                    </div>
+                    <div class="about-stat-card">
+                        <div class="about-stat-number">10+</div>
+                        <div class="about-stat-label">Projects shipped</div>
+                    </div>
+                    <div class="about-stat-card">
+                        <div class="about-stat-number">$50K+</div>
+                        <div class="about-stat-label">Monthly volume handled</div>
+                    </div>
+                    <div class="about-stat-card">
+                        <div class="about-stat-number">3</div>
+                        <div class="about-stat-label">Live SaaS customers</div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -309,13 +554,16 @@
                         <span class="tag">Python</span> <span class="tag">Django</span> <span class="tag">Angular</span> <span class="tag">Postgres</span> <span class="tag">AWS</span>
                     </div>
                 </div>
-                <!--a href="https://website.babybull.cc" target="_blank" class="project-card p-small">
-                    <h3>Demo R.A.G-BAsed Customer Support Assistant AI</h3>
-                    <p>This is a RAG-BASED customer support AI Bot integrated to a Client website. With a management dashboard <a href="https://dashboard.babybull.cc/dashboard" target="_blank">View Dashboard</a></p>
+
+                <!-- ✦ NEW PROJECT CARD ✦ -->
+                <div class="project-card p-large card-coca">
+                    <div class="live-pill">Live · 3 active customers</div>
+                    <h3>Coca-Cola Stockist & POS System</h3>
+                    <p>A cloud-based Stockist Management and Point-of-Sale platform built for Coca-Cola certified stockists in Kenya. Handles inventory tracking, order management, sales reporting, and purchase orders — all in a single unified dashboard currently serving 3 production clients.</p>
                     <div class="tags">
-                        <span class="tag">Python</span> <span class="tag">FastAPI</span> <span class="tag">Vue 3</span> <span class="tag">Chroma Vector Database</span> <span class="tag">Postgres</span> <span class="tag">FastAPI</span>
+                        <span class="tag">FastAPI</span> <span class="tag">React</span> <span class="tag">PostgreSQL</span> <span class="tag">Cloud</span> <span class="tag">POS</span> <span class="tag">Multi-tenant</span>
                     </div>
-                </a-->
+                </div>
 
                 <a href="https://spacemabatiandsteel.co.ke" target="_blank" class="project-card p-small">
                     <h3>Space Mabati & Steel</h3>
@@ -332,13 +580,14 @@
                         <span class="tag">JavaScript</span> <span class="tag">WordPress</span> <span class="tag">UI/UX</span>
                     </div>
                 </a>
+
                 <div class="project-card p-wide">
-                    <h3>R.A.G-Based Customer Support AI agent</h3>
+                    <h3>R.A.G-Based Customer Support AI Agent</h3>
                     <p>Built a robust RAG Based customer AI support assistant integrated to Deepseek R1 model</p>
-                    <p><a href="https://dashboard.babybull.cc/dashboard">View Dashboard</a><br/><a href="https://website.babybull.cc">View Website</a></p>
+                    <p><a href="https://dashboard.babybull.cc/dashboard">View Dashboard</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://website.babybull.cc">View Website</a></p>
                     <div class="tags">
                         <span class="tag">Python</span> <span class="tag">FastAPI</span> <span class="tag">Vue 3</span> <span class="tag">Postgres</span> <span class="tag">Chroma DB</span> <span class="tag">VPS</span>
-                     </div>
+                    </div>
                 </div>
 
             </div>
@@ -349,14 +598,32 @@
 
     <footer id="contact" class="container">
         <div class="cta-box">
-            <h2>Let’s build the next <br>big thing together.</h2>
-            <a href="mailto:titusnjuguna@example.com" class="btn btn-secondary" style="background: white; color: black;">Get in touch</a>
+            <h2>Let's build the next <br>big thing together.</h2>
+            <a href="mailto:titusnjuguna59@gmail.com" class="btn btn-secondary" style="background: white; color: black;">Get in touch</a>
+        </div>
+
+        <!-- Contact Cards -->
+        <div class="contact-grid">
+            <a href="mailto:titusnjuguna59@gmail.com" class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <div>
+                    <div class="contact-info-label">Email</div>
+                    <div class="contact-info-value">titusnjuguna59@gmail.com</div>
+                </div>
+            </a>
+            <a href="tel:+254708520548" class="contact-card">
+                <div class="contact-icon">📞</div>
+                <div>
+                    <div class="contact-info-label">Phone / WhatsApp</div>
+                    <div class="contact-info-value">+254 708 520 548</div>
+                </div>
+            </a>
         </div>
 
         <div class="footer-links">
             <a href="https://github.com/titusnjuguna" target="_blank">GitHub</a>
             <a href="https://www.linkedin.com/in/titus-njuguna-njonjo/" target="_blank">LinkedIn</a>
-            <a href="#">Resume</a>
+            <a href="https://dev.to/titon" target="_blank">Blog</a>
         </div>
         <p style="color: #444; font-size: 0.8rem;">&copy; 2026 Titus Njuguna • Crafted with precision.</p>
     </footer>
