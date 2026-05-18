@@ -34,13 +34,10 @@
             overflow-x: hidden;
         }
 
-        /* Ambient Glow Background */
         .glow {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: radial-gradient(circle at 50% -20%, rgba(99, 102, 241, 0.15), transparent 50%);
             pointer-events: none;
             z-index: -1;
@@ -52,7 +49,7 @@
             padding: 0 1.5rem;
         }
 
-        /* --- NAVIGATION --- */
+        /* --- NAV --- */
         nav {
             position: sticky;
             top: 0;
@@ -88,7 +85,6 @@
         /* --- HERO --- */
         .hero {
             padding: 120px 0 80px;
-            text-align: left;
         }
 
         .badge {
@@ -121,10 +117,7 @@
             margin-bottom: 3rem;
         }
 
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-        }
+        .btn-group { display: flex; gap: 1rem; }
 
         .btn {
             padding: 12px 24px;
@@ -147,77 +140,8 @@
 
         .btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
 
-        /* --- PROJECT BENTO GRID --- */
-        .section-title {
-            margin-bottom: 3rem;
-            font-size: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .section-title::after {
-            content: "";
-            height: 1px;
-            flex-grow: 1;
-            background: var(--border);
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            text-decoration: none;
-            color: inherit;
-            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .project-card:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            background: #111;
-            transform: scale(1.02);
-        }
-
-        /* Bento Logic */
-        .p-large { grid-column: span 7; }
-        .p-small { grid-column: span 5; }
-        .p-wide { grid-column: span 12; }
-
-        .project-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
-        .project-card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; }
-
-        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; }
-        .tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            background: #1a1a1a;
-            color: #ccc;
-            padding: 4px 8px;
-            border-radius: 4px;
-        }
-
-        .stats {
-            margin-top: 1rem;
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--accent);
-        }
-
-        /* --- ABOUT SECTION --- */
-        .about-section {
-            padding: 80px 0 60px;
-        }
+        /* --- ABOUT --- */
+        .about-section { padding: 80px 0 60px; }
 
         .about-inner {
             display: grid;
@@ -243,10 +167,7 @@
             margin-bottom: 1rem;
         }
 
-        .about-text p span {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
+        .about-text p span { color: var(--text-primary); font-weight: 600; }
 
         .about-stats {
             display: grid;
@@ -301,16 +222,79 @@
             transition: 0.25s;
         }
 
-        .skill-chip:hover {
-            border-color: var(--accent);
-            color: var(--text-primary);
-        }
+        .skill-chip:hover { border-color: var(--accent); color: var(--text-primary); }
 
         @media (max-width: 900px) {
             .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
         }
 
-        /* --- NEW: Live indicator pill --- */
+        /* --- PROJECTS BENTO --- */
+        .section-title {
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: "";
+            height: 1px;
+            flex-grow: 1;
+            background: var(--border);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-decoration: none;
+            color: inherit;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: #111;
+            transform: scale(1.02);
+        }
+
+        .p-large { grid-column: span 7; }
+        .p-small { grid-column: span 5; }
+        .p-wide  { grid-column: span 12; }
+
+        .project-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .project-card p  { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; }
+        .tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .stats {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        /* Live pill */
         .live-pill {
             display: inline-flex;
             align-items: center;
@@ -328,8 +312,7 @@
 
         .live-pill::before {
             content: '';
-            width: 6px;
-            height: 6px;
+            width: 6px; height: 6px;
             border-radius: 50%;
             background: #4ade80;
             animation: pulse-dot 1.8s ease-in-out infinite;
@@ -340,7 +323,7 @@
             50% { opacity: 0.4; transform: scale(0.75); }
         }
 
-        /* Subtle red accent strip for the Coca-Cola card */
+        /* Coca-Cola accent strip */
         .card-coca::before {
             content: '';
             position: absolute;
@@ -350,7 +333,21 @@
             border-radius: 16px 16px 0 0;
         }
 
-        /* --- FOOTER --- */
+        /* Inline card links (for multi-link cards) */
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .card-link:hover { color: #a855f7; gap: 10px; }
+
+        /* --- FOOTER / CONTACT --- */
         footer {
             padding: 120px 0 60px;
             text-align: center;
@@ -365,23 +362,6 @@
 
         .cta-box h2 { font-size: 2.5rem; margin-bottom: 1rem; }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
-        .footer-links a:hover { color: var(--accent); }
-
-        /* --- CONTACT SECTION --- */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -409,8 +389,7 @@
         }
 
         .contact-icon {
-            width: 48px;
-            height: 48px;
+            width: 48px; height: 48px;
             border-radius: 12px;
             background: rgba(99, 102, 241, 0.12);
             border: 1px solid rgba(99, 102, 241, 0.25);
@@ -436,15 +415,31 @@
             color: var(--text-primary);
         }
 
-        @media (max-width: 600px) {
-            .contact-grid { grid-template-columns: 1fr; }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
         }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover { color: var(--accent); }
 
         /* Responsive */
         @media (max-width: 900px) {
             .p-large, .p-small { grid-column: span 12; }
             h1 { font-size: 3.5rem; }
             .nav-links { display: none; }
+        }
+
+        @media (max-width: 600px) {
+            .contact-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -454,8 +449,9 @@
 
     <nav>
         <div class="container nav-content">
-            <a href="#" class="logo" style="font-family: 'JetBrains Mono'; text-decoration: none; color: #fff;">TN.</a>
+            <a href="#" class="logo" style="font-family:'JetBrains Mono';text-decoration:none;color:#fff;">TN.</a>
             <ul class="nav-links">
+                <li><a href="#about">About</a></li>
                 <li><a href="#work">Work</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="https://dev.to/titon" target="_blank">Blog</a></li>
@@ -465,10 +461,11 @@
     </nav>
 
     <main class="container">
-        
+
+        <!-- HERO -->
         <section class="hero">
             <div class="badge">Available for new opportunities</div>
-            <h1>Software Engineer </h1>
+            <h1>Software Engineer</h1>
             <p>I specialize in building production-ready AI workflows, multi-tenant SaaS architectures, and high-performance financial systems.</p>
             <div class="btn-group">
                 <a href="mailto:titusnjuguna59@gmail.com" class="btn btn-primary">Start a project</a>
@@ -476,20 +473,14 @@
             </div>
         </section>
 
-        <!-- ✦ ABOUT SECTION ✦ -->
-        <section class="about-section">
+        <!-- ABOUT -->
+        <section id="about" class="about-section">
             <div class="about-inner">
                 <div class="about-text">
                     <h2>Building systems that actually scale.</h2>
-                    <p>
-                        I'm <span>Titus Njuguna</span>, a software engineer based in <span>Nairobi, Kenya</span> with over <span>5 years</span> of experience designing and shipping production-grade software. I work across the full stack — from architecting cloud infrastructure to crafting intuitive user interfaces.
-                    </p>
-                    <p>
-                        My focus is on <span>AI-powered systems</span>, <span>multi-tenant SaaS platforms</span>, and <span>high-performance financial applications</span>. I care deeply about clean architecture, reliable systems, and software that delivers measurable real-world impact.
-                    </p>
-                    <p>
-                        When I'm not building, I write about engineering on my <a href="https://dev.to/titon" target="_blank" style="color: var(--accent); text-decoration: none;">dev.to blog</a>.
-                    </p>
+                    <p>I'm <span>Titus Njuguna</span>, a software engineer based in <span>Nairobi, Kenya</span> with over <span>5 years</span> of experience designing and shipping production-grade software. I work across the full stack — from architecting cloud infrastructure to crafting intuitive user interfaces.</p>
+                    <p>My focus is on <span>AI-powered systems</span>, <span>multi-tenant SaaS platforms</span>, and <span>high-performance financial applications</span>. I care deeply about clean architecture, reliable systems, and software that delivers measurable real-world impact.</p>
+                    <p>When I'm not building, I write about engineering on my <a href="https://dev.to/titon" target="_blank" style="color:var(--accent);text-decoration:none;">dev.to blog</a>.</p>
                     <div class="skills-row">
                         <span class="skill-chip">Python</span>
                         <span class="skill-chip">FastAPI</span>
@@ -503,7 +494,6 @@
                         <span class="skill-chip">Celery</span>
                     </div>
                 </div>
-
                 <div class="about-stats">
                     <div class="about-stat-card">
                         <div class="about-stat-number">5+</div>
@@ -525,25 +515,25 @@
             </div>
         </section>
 
+        <!-- PROJECTS -->
         <section id="work">
             <h2 class="section-title">Selected Projects</h2>
-            
             <div class="project-grid">
-                
-                <div class="project-card p-large">
+
+                <a href="https://sandbox.sinapsis.tech/" target="_blank" class="project-card p-large">
                     <h3>Sinapsis AI Automation</h3>
                     <p>Designed a custom AI workflow engine that allows users to visualize and execute complex logic chains using FastAPI and Vue-Flow. Built for high scalability and modularity.</p>
                     <div class="tags">
-                        <span class="tag">FastAPI</span> <span class="tag">Vue.js</span> <span class="tag">Vue-Flow</span> <span class="tag">Python</span>
+                        <span class="tag">FastAPI</span><span class="tag">Vue.js</span><span class="tag">Vue-Flow</span><span class="tag">Python</span>
                     </div>
-                </div>
+                </a>
 
                 <div class="project-card p-small">
                     <h3>Crowdfunding Platform</h3>
                     <p>A high-traffic financial platform managing significant transaction volumes with 99.9% uptime.</p>
                     <div class="stats">$50,000+ / mo</div>
                     <div class="tags">
-                        <span class="tag">Django</span> <span class="tag">PostgreSQL</span> <span class="tag">Celery</span>
+                        <span class="tag">Django</span><span class="tag">PostgreSQL</span><span class="tag">Celery</span>
                     </div>
                 </div>
 
@@ -551,27 +541,28 @@
                     <h3>Naiverah Ltd: Multi-tenant Loan Management SaaS</h3>
                     <p>Built a robust multi-tenant SaaS architecture for the microlending industry. Features include tenant isolation, automated loan calculation engines, and comprehensive reporting dashboards.</p>
                     <div class="tags">
-                        <span class="tag">Python</span> <span class="tag">Django</span> <span class="tag">Angular</span> <span class="tag">Postgres</span> <span class="tag">AWS</span>
+                        <span class="tag">Python</span><span class="tag">Django</span><span class="tag">Angular</span><span class="tag">Postgres</span><span class="tag">AWS</span>
                     </div>
                 </div>
 
-                <!-- ✦ NEW PROJECT CARD ✦ -->
-                <div class="project-card p-large card-coca">
+                <a href="https://stockist.zenlow.co" target="_blank" class="project-card p-large card-coca">
                     <div class="live-pill">Live · 3 active customers</div>
                     <h3>Coca-Cola Stockist & POS System</h3>
                     <p>A cloud-based Stockist Management and Point-of-Sale platform built for Coca-Cola certified stockists in Kenya. Handles inventory tracking, order management, sales reporting, and purchase orders — all in a single unified dashboard currently serving 3 production clients.</p>
-                    <a href="stockist.zenlow.co" target="_blank">View Project</a>
-                    <p>Credentials:titus@example.com;secret123</p>
-                    <div class="tags">
-                        <span class="tag">FastAPI</span> <span class="tag">React</span> <span class="tag">PostgreSQL</span> <span class="tag">Cloud</span> <span class="tag">POS</span> <span class="tag">Multi-tenant</span>
+                    <div style="background:#111;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:0.75rem 1rem;margin-bottom:1.25rem;font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:#a1a1aa;">
+                        <span style="color:#6366f1;">demo login</span> &nbsp;·&nbsp;
+                        titus@example.com &nbsp;·&nbsp; secret123
                     </div>
-                </div>
+                    <div class="tags">
+                        <span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">PostgreSQL</span><span class="tag">Cloud</span><span class="tag">POS</span><span class="tag">Multi-tenant</span>
+                    </div>
+                </a>
 
                 <a href="https://spacemabatiandsteel.co.ke" target="_blank" class="project-card p-small">
                     <h3>Space Mabati & Steel</h3>
                     <p>Corporate presence for a manufacturing giant. Optimized for speed and SEO.</p>
                     <div class="tags">
-                        <span class="tag">WordPress</span> <span class="tag">Custom CSS</span>
+                        <span class="tag">WordPress</span><span class="tag">Custom CSS</span>
                     </div>
                 </a>
 
@@ -579,16 +570,19 @@
                     <h3>Traveltalk Kenya Ltd</h3>
                     <p>An interactive booking and exploration platform for the tourism industry, focusing on conversion-driven design and user experience.</p>
                     <div class="tags">
-                        <span class="tag">JavaScript</span> <span class="tag">WordPress</span> <span class="tag">UI/UX</span>
+                        <span class="tag">JavaScript</span><span class="tag">WordPress</span><span class="tag">UI/UX</span>
                     </div>
                 </a>
 
                 <div class="project-card p-wide">
                     <h3>R.A.G-Based Customer Support AI Agent</h3>
-                    <p>Built a robust RAG Based customer AI support assistant integrated to Deepseek R1 model</p>
-                    <p><a href="https://dashboard.babybull.cc/dashboard">View Dashboard</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://website.babybull.cc">View Website</a></p>
+                    <p>Built a robust RAG-based customer AI support assistant integrated with the Deepseek R1 model.</p>
+                    <div style="display:flex;gap:1.5rem;margin-bottom:1.25rem;">
+                        <a href="https://dashboard.babybull.cc/dashboard" target="_blank" class="card-link">View Dashboard →</a>
+                        <a href="https://website.babybull.cc" target="_blank" class="card-link">View Website →</a>
+                    </div>
                     <div class="tags">
-                        <span class="tag">Python</span> <span class="tag">FastAPI</span> <span class="tag">Vue 3</span> <span class="tag">Postgres</span> <span class="tag">Chroma DB</span> <span class="tag">VPS</span>
+                        <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Vue 3</span><span class="tag">Postgres</span><span class="tag">Chroma DB</span><span class="tag">VPS</span>
                     </div>
                 </div>
 
@@ -598,13 +592,13 @@
     </main>
     <br/>
 
+    <!-- CONTACT / FOOTER -->
     <footer id="contact" class="container">
         <div class="cta-box">
             <h2>Let's build the next <br>big thing together.</h2>
-            <a href="mailto:titusnjuguna59@gmail.com" class="btn btn-secondary" style="background: white; color: black;">Get in touch</a>
+            <a href="mailto:titusnjuguna59@gmail.com" class="btn btn-secondary" style="background:white;color:black;">Get in touch</a>
         </div>
 
-        <!-- Contact Cards -->
         <div class="contact-grid">
             <a href="mailto:titusnjuguna59@gmail.com" class="contact-card">
                 <div class="contact-icon">✉️</div>
@@ -627,7 +621,7 @@
             <a href="https://www.linkedin.com/in/titus-njuguna-njonjo/" target="_blank">LinkedIn</a>
             <a href="https://dev.to/titon" target="_blank">Blog</a>
         </div>
-        <p style="color: #444; font-size: 0.8rem;">&copy; 2026 Titus Njuguna • Crafted with precision.</p>
+        <p style="color:#444;font-size:0.8rem;">&copy; 2026 Titus Njuguna • Crafted with precision.</p>
     </footer>
 
 </body>
