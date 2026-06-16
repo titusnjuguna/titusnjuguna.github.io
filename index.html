@@ -6,17 +6,21 @@
     <title>Titus Njuguna | Software Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg: #030303;
-            --card: #0a0a0a;
-            --border: rgba(255, 255, 255, 0.08);
-            --text-primary: #ffffff;
+            --bg: #09090b;
+            --card: #18181b;
+            --border: #27272a;
+            --border-hover: #3f3f46;
+            --text-primary: #fafafa;
             --text-secondary: #a1a1aa;
-            --accent: #6366f1;
-            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --text-muted: #71717a;
+            --accent: #3b82f6;
+            --accent-soft: rgba(59, 130, 246, 0.1);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
         * {
@@ -29,35 +33,27 @@
         body {
             background-color: var(--bg);
             color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-sans);
             line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .glow {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% -20%, rgba(99, 102, 241, 0.15), transparent 50%);
-            pointer-events: none;
-            z-index: -1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
 
-        /* --- NAV --- */
+        /* --- NAVIGATION --- */
         nav {
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(3, 3, 3, 0.8);
+            background: rgba(9, 9, 11, 0.8);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
-            padding: 1rem 0;
+            padding: 1.25rem 0;
         }
 
         .nav-content {
@@ -66,390 +62,464 @@
             align-items: center;
         }
 
+        .logo {
+            font-family: var(--font-mono);
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            letter-spacing: -0.05em;
+        }
+
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.75rem;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
-            transition: 0.3s;
+            transition: color 0.2s ease;
         }
 
-        .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
 
         /* --- HERO --- */
         .hero {
-            padding: 120px 0 80px;
+            padding: 7rem 0 5rem;
         }
 
         .badge {
-            display: inline-block;
-            padding: 4px 12px;
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid var(--accent);
-            border-radius: 100px;
-            color: var(--accent);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            margin-bottom: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.75rem;
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 9999px;
+            color: #4ade80;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .badge::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            background-color: #4ade80;
+            border-radius: 50%;
         }
 
         h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 800;
-            letter-spacing: -0.04em;
-            line-height: 1;
-            margin-bottom: 2rem;
-            background: linear-gradient(to bottom, #fff 40%, #71717a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: clamp(2.5rem, 6vw, 3.75rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: var(--text-secondary);
             max-width: 600px;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
         }
 
-        .btn-group { display: flex; gap: 1rem; }
+        .btn-group {
+            display: flex;
+            gap: 0.75rem;
+        }
 
         .btn {
-            padding: 12px 24px;
-            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
             text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
         }
 
         .btn-primary {
-            background: var(--accent-gradient);
-            color: white;
-            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+            background: var(--text-primary);
+            color: var(--bg);
+        }
+
+        .btn-primary:hover {
+            background: #e4e4e7;
         }
 
         .btn-secondary {
             border: 1px solid var(--border);
-            color: white;
+            color: var(--text-primary);
+            background: transparent;
         }
 
-        .btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+        .btn-secondary:hover {
+            background: var(--card);
+            border-color: var(--border-hover);
+        }
 
         /* --- ABOUT --- */
-        .about-section { padding: 80px 0 60px; }
+        .about-section {
+            padding: 5rem 0;
+            border-top: 1px solid var(--border);
+        }
 
         .about-inner {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.2fr 0.8fr;
             gap: 4rem;
-            align-items: center;
         }
 
         .about-text h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.25rem;
-            background: linear-gradient(to bottom, #fff 40%, #71717a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 1.75rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
         }
 
         .about-text p {
             color: var(--text-secondary);
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.75;
+            margin-bottom: 1.25rem;
         }
 
-        .about-text p span { color: var(--text-primary); font-weight: 600; }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .about-stat-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 1.5rem;
-            transition: 0.3s;
-        }
-
-        .about-stat-card:hover {
-            border-color: rgba(99, 102, 241, 0.4);
-            background: #111;
-        }
-
-        .about-stat-number {
-            font-size: 2rem;
-            font-weight: 800;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1;
-            margin-bottom: 0.4rem;
-        }
-
-        .about-stat-label {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            font-family: 'JetBrains Mono', monospace;
+        .about-text p span {
+            color: var(--text-primary);
+            font-weight: 500;
         }
 
         .skills-row {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
         }
 
         .skill-chip {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
-            padding: 5px 12px;
-            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
             border: 1px solid var(--border);
             color: var(--text-secondary);
-            background: #0f0f0f;
-            transition: 0.25s;
+            background: var(--card);
         }
 
-        .skill-chip:hover { border-color: var(--accent); color: var(--text-primary); }
-
-        @media (max-width: 900px) {
-            .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-        }
-
-        /* --- PROJECTS BENTO --- */
-        .section-title {
-            margin-bottom: 3rem;
-            font-size: 2rem;
-            display: flex;
-            align-items: center;
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 1rem;
+            align-content: start;
         }
 
-        .section-title::after {
-            content: "";
-            height: 1px;
-            flex-grow: 1;
-            background: var(--border);
+        .about-stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+
+        .about-stat-number {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin-bottom: 0.25rem;
+            font-family: var(--font-mono);
+        }
+
+        .about-stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- PROJECTS --- */
+        #work {
+            padding: 5rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 3rem;
         }
 
         .project-grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         .project-card {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
+            border-radius: 10px;
+            padding: 1.75rem;
             text-decoration: none;
             color: inherit;
-            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
-            overflow: hidden;
             position: relative;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
         }
 
         .project-card:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            background: #111;
-            transform: scale(1.02);
+            border-color: var(--border-hover);
+            background: #1e1e24;
         }
 
         .p-large { grid-column: span 7; }
         .p-small { grid-column: span 5; }
         .p-wide  { grid-column: span 12; }
 
-        .project-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
-        .project-card p  { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; }
+        .project-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+        }
 
-        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; }
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-top: auto;
+        }
+
         .tag {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
             font-size: 0.7rem;
-            background: #1a1a1a;
-            color: #ccc;
-            padding: 4px 8px;
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-secondary);
+            padding: 0.2rem 0.5rem;
             border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         .stats {
-            margin-top: 1rem;
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--accent);
+            margin-top: auto;
+            margin-bottom: 1rem;
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
         }
 
-        /* Live pill */
+        /* Live Indicator Badge */
         .live-pill {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            padding: 4px 10px;
-            background: rgba(34, 197, 94, 0.1);
-            border: 1px solid rgba(34, 197, 94, 0.35);
-            border-radius: 100px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.68rem;
-            color: #4ade80;
+            gap: 0.35rem;
+            padding: 0.2rem 0.5rem;
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: #60a5fa;
             margin-bottom: 1rem;
             width: fit-content;
         }
 
         .live-pill::before {
             content: '';
-            width: 6px; height: 6px;
+            width: 4px;
+            height: 4px;
             border-radius: 50%;
-            background: #4ade80;
-            animation: pulse-dot 1.8s ease-in-out infinite;
+            background: #60a5fa;
         }
 
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.75); }
+        /* Demo Credentials Block */
+        .demo-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.6rem 0.85rem;
+            margin-bottom: 1.25rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
         }
 
-        /* Coca-Cola accent strip */
-        .card-coca::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #ef4444 0%, #f97316 100%);
-            border-radius: 16px 16px 0 0;
+        .demo-box span {
+            color: var(--text-primary);
+            font-weight: 500;
         }
 
-        /* Inline card links (for multi-link cards) */
+        /* Link utility */
         .card-link {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--accent);
+            gap: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-primary);
             text-decoration: none;
-            transition: 0.2s;
+            transition: opacity 0.2s ease;
         }
 
-        .card-link:hover { color: #a855f7; gap: 10px; }
+        .card-link:hover {
+            opacity: 0.8;
+        }
 
-        /* --- FOOTER / CONTACT --- */
+        /* --- CONTACT & FOOTER --- */
         footer {
-            padding: 120px 0 60px;
-            text-align: center;
+            padding: 5rem 0 3rem;
+            border-top: 1px solid var(--border);
         }
 
         .cta-box {
-            background: var(--accent-gradient);
-            padding: 4rem 2rem;
-            border-radius: 24px;
-            margin-bottom: 4rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 3.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 3.5rem;
         }
 
-        .cta-box h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .cta-box h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
 
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-bottom: 3rem;
+            gap: 1rem;
+            margin-bottom: 4rem;
         }
 
         .contact-card {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
             display: flex;
             align-items: center;
-            gap: 1.25rem;
+            gap: 1rem;
             text-decoration: none;
             color: inherit;
-            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: border-color 0.2s ease;
         }
 
         .contact-card:hover {
-            border-color: rgba(99, 102, 241, 0.5);
-            background: #111;
-            transform: translateY(-3px);
+            border-color: var(--border-hover);
         }
 
         .contact-icon {
-            width: 48px; height: 48px;
-            border-radius: 12px;
-            background: rgba(99, 102, 241, 0.12);
-            border: 1px solid rgba(99, 102, 241, 0.25);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 1.25rem;
+            font-size: 1.1rem;
+            color: var(--text-muted);
         }
 
         .contact-info-label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--accent);
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 4px;
+            letter-spacing: 0.05em;
+            margin-bottom: 2px;
         }
 
         .contact-info-value {
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 0.9rem;
+            font-weight: 500;
             color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
         }
 
         .footer-links {
             display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 2rem;
+            gap: 1.5rem;
         }
 
         .footer-links a {
-            color: var(--text-secondary);
+            color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.9rem;
-            transition: 0.3s;
+            font-size: 0.8rem;
+            transition: color 0.2s ease;
         }
 
-        .footer-links a:hover { color: var(--accent); }
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
 
-        /* Responsive */
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* --- RESPONSIVE STYLES --- */
         @media (max-width: 900px) {
-            .p-large, .p-small { grid-column: span 12; }
-            h1 { font-size: 3.5rem; }
-            .nav-links { display: none; }
+            .about-inner {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .p-large, .p-small {
+                grid-column: span 12;
+            }
         }
 
         @media (max-width: 600px) {
-            .contact-grid { grid-template-columns: 1fr; }
+            .hero {
+                padding: 4rem 0 3rem;
+            }
+            h1 {
+                font-size: 2.25rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="glow"></div>
-
     <nav>
         <div class="container nav-content">
-            <a href="#" class="logo" style="font-family:'JetBrains Mono';text-decoration:none;color:#fff;">TN.</a>
+            <a href="#" class="logo">TN.</a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#work">Work</a></li>
@@ -464,9 +534,9 @@
 
         <!-- HERO -->
         <section class="hero">
-            <div class="badge">Available for new opportunities</div>
+            <div class="badge">Available for opportunities</div>
             <h1>Software Engineer</h1>
-            <p>I specialize in building production-ready AI workflows, multi-tenant SaaS architectures, and high-performance financial systems.</p>
+            <p>I design and construct reliable backend systems, multi-tenant SaaS platforms, and automated developer workflows.</p>
             <div class="btn-group">
                 <a href="mailto:titusnjuguna59@gmail.com" class="btn btn-primary">Start a project</a>
                 <a href="https://github.com/titusnjuguna" class="btn btn-secondary" target="_blank">View GitHub</a>
@@ -477,10 +547,10 @@
         <section id="about" class="about-section">
             <div class="about-inner">
                 <div class="about-text">
-                    <h2>Building systems that actually scale.</h2>
-                    <p>I'm <span>Titus Njuguna</span>, a software engineer based in <span>Nairobi, Kenya</span> with over <span>5 years</span> of experience designing and shipping production-grade software. I work across the full stack — from architecting cloud infrastructure to crafting intuitive user interfaces.</p>
-                    <p>My focus is on <span>AI-powered systems</span>, <span>multi-tenant SaaS platforms</span>, and <span>high-performance financial applications</span>. I care deeply about clean architecture, reliable systems, and software that delivers measurable real-world impact.</p>
-                    <p>When I'm not building, I write about engineering on my <a href="https://dev.to/titon" target="_blank" style="color:var(--accent);text-decoration:none;">dev.to blog</a>.</p>
+                    <h2>Engineered for durability.</h2>
+                    <p>I'm <span>Titus Njuguna</span>, a software engineer based in <span>Nairobi, Kenya</span>. I focus on developing clean architectures, maintaining performance under load, and designing clear interfaces for complex technical systems.</p>
+                    <p>My core experience centers on <span>AI integrations</span>, <span>multi-tenant software systems</span>, and <span>transactional financial tools</span>. I build with standard-compliant processes and focus on clean, self-documenting codebases.</p>
+                    <p>Additionally, I document technical concepts and projects on my <a href="https://dev.to/titon" target="_blank" style="color:var(--text-primary);text-decoration:underline;">dev.to publication</a>.</p>
                     <div class="skills-row">
                         <span class="skill-chip">Python</span>
                         <span class="skill-chip">FastAPI</span>
@@ -497,19 +567,19 @@
                 <div class="about-stats">
                     <div class="about-stat-card">
                         <div class="about-stat-number">5+</div>
-                        <div class="about-stat-label">Years of experience</div>
+                        <div class="about-stat-label">Years of Experience</div>
                     </div>
                     <div class="about-stat-card">
                         <div class="about-stat-number">10+</div>
-                        <div class="about-stat-label">Projects shipped</div>
+                        <div class="about-stat-label">Projects Shipped</div>
                     </div>
                     <div class="about-stat-card">
                         <div class="about-stat-number">$50K+</div>
-                        <div class="about-stat-label">Monthly volume handled</div>
+                        <div class="about-stat-label">Monthly Volume</div>
                     </div>
                     <div class="about-stat-card">
                         <div class="about-stat-number">3</div>
-                        <div class="about-stat-label">Live SaaS customers</div>
+                        <div class="about-stat-label">Live SaaS Installs</div>
                     </div>
                 </div>
             </div>
@@ -520,69 +590,90 @@
             <h2 class="section-title">Selected Projects</h2>
             <div class="project-grid">
 
+                <!-- Sinapsis -->
                 <a href="https://sandbox.sinapsis.tech/" target="_blank" class="project-card p-large">
                     <h3>Sinapsis AI Automation</h3>
-                    <p>Designed a custom AI workflow engine that allows users to visualize and execute complex logic chains using FastAPI and Vue-Flow. Built for high scalability and modularity.</p>
+                    <p>Designed a custom AI workflow engine allowing users to visualize and execute complex logic chains. Built utilizing FastAPI backend APIs and Vue-Flow interactions.</p>
                     <div class="tags">
                         <span class="tag">FastAPI</span><span class="tag">Vue.js</span><span class="tag">Vue-Flow</span><span class="tag">Python</span>
                     </div>
                 </a>
 
+                <!-- Crowdfunding -->
                 <div class="project-card p-small">
                     <h3>Crowdfunding Platform</h3>
-                    <p>A high-traffic financial platform managing significant transaction volumes with 99.9% uptime.</p>
+                    <p>High-volume financial engine designed around robust ledger schemas with consistent relational execution strategies.</p>
                     <div class="stats">$50,000+ / mo</div>
                     <div class="tags">
                         <span class="tag">Django</span><span class="tag">PostgreSQL</span><span class="tag">Celery</span>
                     </div>
                 </div>
 
+                <!-- Naiverah -->
                 <div class="project-card p-wide">
                     <h3>Naiverah Ltd: Multi-tenant Loan Management SaaS</h3>
-                    <p>Built a robust multi-tenant SaaS architecture for the microlending industry. Features include tenant isolation, automated loan calculation engines, and comprehensive reporting dashboards.</p>
+                    <p>Constructed a robust multi-tenant SaaS architecture for the microlending industry. Core features deliver isolated database schemas per client, automated scheduled loan engine computations, and localized reporting modules.</p>
                     <div class="tags">
                         <span class="tag">Python</span><span class="tag">Django</span><span class="tag">Angular</span><span class="tag">Postgres</span><span class="tag">AWS</span>
                     </div>
                 </div>
 
-                <a href="https://stockist.zenlow.co" target="_blank" class="project-card p-large card-coca">
-                    <div class="live-pill">Live · 3 active customers</div>
+                <!-- Coca Cola -->
+                <a href="https://stockist.zenlow.co" target="_blank" class="project-card p-large">
+                    <div class="live-pill">Live Project</div>
                     <h3>Coca-Cola Stockist & POS System</h3>
-                    <p>A cloud-based Stockist Management and Point-of-Sale platform built for Coca-Cola certified stockists in Kenya. Handles inventory tracking, order management, sales reporting, and purchase orders — all in a single unified dashboard currently serving 3 production clients.</p>
-                    <div style="background:#111;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:0.75rem 1rem;margin-bottom:1.25rem;font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:#a1a1aa;">
-                        <span style="color:#6366f1;">demo login</span> &nbsp;·&nbsp;
-                        titus@example.com &nbsp;·&nbsp; secret123
+                    <p>A multi-tenant cloud platform deployed for authorized distribution stockists. Tracks local inventories, point-of-sale invoices, and supplier shipments with high reliability.</p>
+                    <div class="demo-box">
+                        <span>Demo Link:</span> stockist.zenlow.co<br>
+                        <span>Login:</span> titus@example.com &nbsp;·&nbsp; <span>Pass:</span> secret123
                     </div>
                     <div class="tags">
-                        <span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">PostgreSQL</span><span class="tag">Cloud</span><span class="tag">POS</span><span class="tag">Multi-tenant</span>
+                        <span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">PostgreSQL</span><span class="tag">POS</span>
                     </div>
                 </a>
 
+                <!-- Wifi Hotspot (NEW PROJECT) -->
+                <a href="https://wifi.babybull.cc" target="_blank" class="project-card p-small">
+                    <div class="live-pill">Live Demo</div>
+                    <h3>Network Management System (WiFi Hotspot)</h3>
+                    <p>A captive portal management system for network administration. Features authenticated client registration, custom speed limits, and session monitoring dashboards.</p>
+                    <div class="demo-box">
+                        <span>URL:</span> wifi.babybull.cc<br>
+                        <span>User:</span> admin &nbsp;·&nbsp; <span>Pass:</span> admin
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Captive Portal</span><span class="tag">Networks</span><span class="tag">Radius</span><span class="tag">Security</span>
+                    </div>
+                </a>
+
+                <!-- Space Mabati -->
                 <a href="https://spacemabatiandsteel.co.ke" target="_blank" class="project-card p-small">
                     <h3>Space Mabati & Steel</h3>
-                    <p>Corporate presence for a manufacturing giant. Optimized for speed and SEO.</p>
+                    <p>Custom digital web portal optimized for structural manufacturing presentation, localized search queries, and content discoverability.</p>
                     <div class="tags">
                         <span class="tag">WordPress</span><span class="tag">Custom CSS</span>
                     </div>
                 </a>
 
+                <!-- Traveltalk -->
                 <a href="https://traveltalk.co.ke" target="_blank" class="project-card p-large">
                     <h3>Traveltalk Kenya Ltd</h3>
-                    <p>An interactive booking and exploration platform for the tourism industry, focusing on conversion-driven design and user experience.</p>
+                    <p>A fast, responsive web interface built for a regional tourism booking provider, focusing on clean information architecture and conversion funnels.</p>
                     <div class="tags">
-                        <span class="tag">JavaScript</span><span class="tag">WordPress</span><span class="tag">UI/UX</span>
+                        <span class="tag">JavaScript</span><span class="tag">CSS3</span><span class="tag">UI/UX</span>
                     </div>
                 </a>
 
+                <!-- RAG Agent -->
                 <div class="project-card p-wide">
                     <h3>R.A.G-Based Customer Support AI Agent</h3>
-                    <p>Built a robust RAG-based customer AI support assistant integrated with the Deepseek R1 model.</p>
+                    <p>Developed a custom retrieval-augmented generation (RAG) assistant integrated directly with regional vector schemas and Deepseek language systems.</p>
                     <div style="display:flex;gap:1.5rem;margin-bottom:1.25rem;">
                         <a href="https://dashboard.babybull.cc/dashboard" target="_blank" class="card-link">View Dashboard →</a>
                         <a href="https://website.babybull.cc" target="_blank" class="card-link">View Website →</a>
                     </div>
                     <div class="tags">
-                        <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Vue 3</span><span class="tag">Postgres</span><span class="tag">Chroma DB</span><span class="tag">VPS</span>
+                        <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Vue 3</span><span class="tag">Postgres</span><span class="tag">Chroma DB</span>
                     </div>
                 </div>
 
@@ -590,25 +681,24 @@
         </section>
 
     </main>
-    <br/>
 
     <!-- CONTACT / FOOTER -->
     <footer id="contact" class="container">
         <div class="cta-box">
-            <h2>Let's build the next <br>big thing together.</h2>
-            <a href="mailto:titusnjuguna59@gmail.com" class="btn btn-secondary" style="background:white;color:black;">Get in touch</a>
+            <h2>Let's discuss your next project.</h2>
+            <a href="mailto:titusnjuguna59@gmail.com" class="btn btn-primary">Get in touch</a>
         </div>
 
         <div class="contact-grid">
             <a href="mailto:titusnjuguna59@gmail.com" class="contact-card">
-                <div class="contact-icon">✉️</div>
+                <span class="contact-icon">✉️</span>
                 <div>
                     <div class="contact-info-label">Email</div>
                     <div class="contact-info-value">titusnjuguna59@gmail.com</div>
                 </div>
             </a>
             <a href="tel:+254708520548" class="contact-card">
-                <div class="contact-icon">📞</div>
+                <span class="contact-icon">📞</span>
                 <div>
                     <div class="contact-info-label">Phone / WhatsApp</div>
                     <div class="contact-info-value">+254 708 520 548</div>
@@ -616,12 +706,14 @@
             </a>
         </div>
 
-        <div class="footer-links">
-            <a href="https://github.com/titusnjuguna" target="_blank">GitHub</a>
-            <a href="https://www.linkedin.com/in/titus-njuguna-njonjo/" target="_blank">LinkedIn</a>
-            <a href="https://dev.to/titon" target="_blank">Blog</a>
+        <div class="footer-bottom">
+            <p class="copyright">&copy; 2026 Titus Njuguna • Software Engineer</p>
+            <div class="footer-links">
+                <a href="https://github.com/titusnjuguna" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/titus-njuguna-njonjo/" target="_blank">LinkedIn</a>
+                <a href="https://dev.to/titon" target="_blank">Blog</a>
+            </div>
         </div>
-        <p style="color:#444;font-size:0.8rem;">&copy; 2026 Titus Njuguna • Crafted with precision.</p>
     </footer>
 
 </body>
